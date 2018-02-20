@@ -1,0 +1,18 @@
+<h1>My Tasks</h1>
+<% @tasks.each do |t|%>
+
+<div class="container">
+  <h2><%= link_to t.title, task_path(t) %></h2>
+
+  <%= link_to "Delete", task_path(t), method: :delete, data: {confirm: "Are you sure"} %>
+  <%= link_to "edit", edit_task_path(t) %>
+
+  <% if t.completed == true %>
+  <div><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span></div>
+  <% else %>
+  <div><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></div>
+</div>
+<% end %>
+<% end %>
+
+<%= link_to 'Add new task', new_task_path %>
